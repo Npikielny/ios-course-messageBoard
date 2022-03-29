@@ -67,8 +67,11 @@ struct PostController: RouteCollection {
             }
     }
     
+    var username: String = "iOS Instructors"
+    var password: String = "I Love Walker White"
+    
     func reset(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-        if req.parameters.get("username") == "iOS Instructors" && req.parameters.get("password") == "I Love Walker White" { // change these to secrets
+        if req.parameters.get("username") == username && req.parameters.get("password") == password { // change these to secrets
             return Post.query(on: req.db).all()
                 .map { $0.delete(on: req.db) }
                 .transform(to: .ok)
