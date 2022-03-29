@@ -50,8 +50,9 @@ struct PostController: RouteCollection {
         guard let newPost = try? req.content.decode(Post.self) else { throw RouteError.unsupportedMediaType }
         
         guard let id: UUID = req.parameters.get("postID"),
-              let poster = newPost.poster else {
-                  throw RouteError.partialInformation("Requires poster: <String> body")
+              let poster = newPost.poster,
+              let body = newPost.body else {
+                  throw RouteError.partialInformation("Requires poster: <String> and body: <String>")
               }
         
         return Post.query(on: req.db)
@@ -60,7 +61,7 @@ struct PostController: RouteCollection {
             .first()
             .unwrap(or: RouteError.notFound)
             .flatMap { post in
-                post.body = newPost.body;
+                post.body = body;
                 return post.update(on: req.db)
                     .transform(to: post)
             }
