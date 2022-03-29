@@ -1,4 +1,4 @@
-# ios-course-messageBoard
+# ios-course-message-board
 
 A simple server in Swift (Fluent & Vapor) for use in AppDev's Intro to iOS Course
 
