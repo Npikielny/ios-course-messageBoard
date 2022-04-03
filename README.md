@@ -89,6 +89,7 @@ Requirements:
     - body: poster
      
 # Backend Walkthrough
+**For instructors and those who are interested**
 The backend for this project is written entirely in Swift in hopes that future instructors of the Intro to iOS Course will be able to make the changes they see fit.
 Also, because I wanted to make a backend in Swift.
 
